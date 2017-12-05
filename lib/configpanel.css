@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+
+#input_table {
+    background-color: #FDD017;
+}
+
+#input_data {
+    background-color: #FFF380;
+}
+
+#four_trans_table {
+    background-color: #FFF380;
+    width: 100%;
+}
+
+#four_trans_table td {
+    text-align: center;
+}
+
+.input_name_class {
+    font-size: 16px;
+    color: GREEN;
+    display : inline;
+}
+
+.input_text_class {
+    font-size: 16px;
+    color: #151B54;
+    display : inline;
+}
+
+#name {
+    font-size: 16px;
+    color: BLUE;
+}
+
+#bornHour {
+    font-size: 16px;
+    color: RED;
+}
+
+#gender {
+    border: 0px;
+    width: 20px;
+    display : inline;
+}
+
+input[type=text] {
+    font-size: 16px;
+    color: #151B54;
+}
+
+input[type=button] {
+    font-size: 24px;
+    color: #151B54;
+}
+
+option {
+    font-size: 24px;
+    padding: 5px;
+    background: #5c5c5c;
+    color: RED;
+}
+

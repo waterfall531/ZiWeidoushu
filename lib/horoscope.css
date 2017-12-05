@@ -1,0 +1,121 @@
+@CHARSET "utf-8";
+
+/* 命盤 */
+#horoscope_content {
+    display: inline;
+    color: #625D5D;
+}
+
+#horoscope_table {
+    border-spacing: 2px;
+    background-color: #2B1B17;
+    width: 720px;
+    font-size: 14px;
+    font-family: Courier, monospace, Times New Roman, 微軟正黑體, 新細明體;
+    font-style: normal;
+    text-shadow: 0 0 1px transparent;
+    text-align: center;
+}
+
+#horoscope_table td {
+    background-color: WHITE;
+    padding: 4px;
+    text-align: center;
+}
+
+/* logo */
+.logo_class {
+    display: inline;
+    color: #347C2C;
+}
+
+/* 中宮 */
+.summary_class {
+    display: inline;
+    color: #151B54;
+}
+
+/* 中宮數字　*/
+.summary_class_num {
+    display: inline;
+    color: RED;
+    font-size: 84%;
+}
+
+/* 閏月 */
+.summary_leapmonth_class {
+    font-size: 100%;
+    display: inline;
+    color: #EAC117;
+}
+
+/* 宮位名稱 */
+.palace_name_class {
+    display: inline;
+    color: #2B1B17;
+}
+
+/* 身宮 */
+.acquired_class {
+    display: inline;
+    color: #E41B17;
+}
+
+/* 宮位干支 */
+.palace_stem_class {
+    display: inline;
+    color: #E8A317;
+}
+
+/* 甲級星 */
+.primary_star_class {
+    display: inline;
+    color: #1F45FC;
+}
+
+/* 六吉星 */
+.nice_star_class {
+    display: inline;
+    color: #347C2C;
+}
+
+/* 四煞星 */
+.bad_star_class {
+    display: inline;
+    color: #FF0000;
+}
+
+/* 空亡星 */
+.hollow_star_class {
+    display: inline;
+    color: #565051;
+}
+
+/* 乙級星 */
+.secondary_star_class {
+    display: inline;
+    color: #4863A0;
+}
+
+/* 四化星 */
+.transform_star_class {
+    display: inline;
+    background-color: GREEN;
+    color: #FEFEFE;
+    font-size: 90%;
+}
+
+/* 大限歲數範圍 */
+.period_range_class {
+    display: inline;
+    color: #6A287E;
+    font-size: 84%;
+}
+
+/* 小限歲數 */
+.internal_age_class {
+    display: inline;
+    color: #306754;
+    font-size: 80%;
+}
+
