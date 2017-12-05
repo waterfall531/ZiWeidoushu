@@ -1,53 +1,27 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>紫微斗數排盤</title>
-        <link rel="stylesheet" type="text/css" href="./lib/configpanel.css">
+        <script src="lib/js/jquery-3.2.1.slim.min.js"></script>
+        <script src="lib/js/bootstrap.min.js"></script>
+        <script src="./lib/moment-with-langs.min.js"></script>
+        <script src="./lib/pikaday.js"></script>
+        <script src="./lib/LunarCalendarBuildin.js"></script>
+        <script src="./lib/Dictionary.js"></script>
+        <script src="./lib/Horoscope.js"></script>
+        <script src="./lib/Palace.js"></script>
+        <script src="./lib/HoroscopeUtil.js"></script>
+        <script src="./lib/HtmlUtility.js"></script>
         <link rel="stylesheet" type="text/css" href="./lib/pikaday.css">
-        <link rel="stylesheet" type="text/css" href="./lib/horoscope.css">
-        <script type="text/javascript" charset="utf-8" src="./lib/moment-with-langs.min.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/pikaday.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/LunarCalendarBuildin.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/Dictionary.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/Horoscope.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/Palace.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/HoroscopeUtil.js.download"></script>
-        <script type="text/javascript" charset="utf-8" src="./lib/HtmlUtility.js.download"></script>
-        <script type="text/javascript" charset="utf-8">
-        var style_html =
-            '<style scoped>\
-@CHARSET "utf-8";\
-#horoscope_content {display: inline; color: #625D5D;}\
-#horoscope_table {border-spacing: 1px;background-color: #2B1B17;font-size: 14px;font-style: normal;font-family: Courier, monospace, Times New Roman, 微軟正黑體, 新細明體;text-shadow: 0 0 1px transparent;text-align: center;}\
-#horoscope_table td {background-color: WHITE;padding: 2px;text-align: right;}\
-.logo_class {display: inline;color: #347C2C;}\
-.summary_class {display: inline;color: #151B54;}\
-.summary_class_num {display: inline;color: RED;font-size: 85%;}\
-.summary_leapmonth_class {display: inline;color: #EAC117;}\
-.palace_name_class {display: inline;color: #2B1B17;}\
-.acquired_class {display: inline;color: #E41B17;}\
-.palace_stem_class {display: inline;color: #E8A317;}\
-.primary_star_class {display: inline;color: #1F45FC;}\
-.nice_star_class {display: inline;color: #347C2C;}\
-.bad_star_class {display: inline;color: #FF0000;}\
-.hollow_star_class {display: inline;color: #565051;}\
-.secondary_star_class {display: inline;color: #4863A0;}\
-.transform_star_class {display: inline;background-color: GREEN;color: #FEFEFE;font-size: 90%;}\
-.period_range_class {display: inline;color: #6A287E;font-size: 85%;}\
-.internal_age_class {display: inline;color: #306754;font-size: 85%;}\
-</style>';
-        //
-        Dictionary.BANNER = '';
+        <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/css/new.css">
+        <script>
+        Dictionary.BANNER = '科技紫微 如沐春風';
         var hs_win;
 
         function initComponent() {
-            document.onmousedown = function(event) {
-                if (event.button == 2) {
-                    return false;
-                }
-            };
-            //
             var today = new Date();
             var yearRange = [1900, 2030];
             new Pikaday({
@@ -89,30 +63,11 @@
             var bornHour = parseInt(document.getElementById('bornHour').value);
             //
             Horoscope.getHoroscopeHtml(name, gender, true, birthDate, bornHour, false, openHS);
-            hs_win = window.open('', '', 'width=800,height=640,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,copyhistory=no,resizable=no');
+            hs_win = window.open('', '', ',toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,copyhistory=no,resizable=no');
         }
 
         function openHS(hs_content, name) {
-            var el = document.createElement('div');
-            el.appendChild(hs_content);
-            var html_data = style_html +
-                '<div class="horoscope_content" id="horoscope_content">' +
-                el.innerHTML +
-                '</div>';
-            //
-            var content = '<html><head><title>' +
-                name + '的命盤' +
-                '</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>' +
-                '<body><center>' +
-                html_data +
-                '<div style="color: RED;">請複製貼上下方代碼</div>' +
-                '<textarea id="horoscope_html" cols=100 rows=30 >' +
-                html_data +
-                '</textarea>' +
-                '</center></body>' +
-                '</html>';
-            //
-            hs_win.document.write(content);
+            hs_win.document.write(hs_content);
         }
 
         function reset() {
@@ -123,337 +78,358 @@
 
     <body onload="initComponent()" oncontextmenu="return false">
         <div align="center">
-            <div style="font-size: 18px; color: #7E3117;">紫微斗數排盤程式 v2.0.0</div>
+            <div>紫微斗數</div>
         </div>
-        <div align="center">
-            <table id="input_table">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table id="input_data">
-                                <tbody>
-                                    <tr>
-                                        <td width="160">
-                                            姓名
-                                            <input type="text" id="name" size="12" placeholder="請輸入姓名">
-                                        </td>
-                                        <td width="60">
-                                            男
-                                            <input type="radio" name="gender" id="gender_male" value="true" checked="">
-                                            <br> 女
-                                            <input type="radio" name="gender" id="gender_female" value="false">
-                                        </td>
-                                        <td>
-                                            生日
-                                            <input type="text" id="birthDate" size="18">
-                                        </td>
-                                        <td>
-                                            出生時辰
-                                            <select id="bornHour">
-                                                <option value="1" selected="">早子(00-01)</option>
-                                                <option value="2">丑(01-03)</option>
-                                                <option value="3">寅(03-05)</option>
-                                                <option value="4">卯(05-07)</option>
-                                                <option value="5">辰(07-09)</option>
-                                                <option value="6">巳(09-11)</option>
-                                                <option value="7">午(11-13)</option>
-                                                <option value="8">未(13-15)</option>
-                                                <option value="9">申(15-17)</option>
-                                                <option value="10">酉(17-19)</option>
-                                                <option value="11">戌(19-21)</option>
-                                                <option value="0">亥(21-23)</option>
-                                                <option value="1">晚子(23-00)</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center; font-size: 16px; color: #7E3117; ">天 干 四 化 設 定</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table id="four_trans_table" style="display: none;">
-                                <tbody>
-                                    <tr>
-                                        <th>天干</th>
-                                        <th>化祿</th>
-                                        <th>化權</th>
-                                        <th>化科</th>
-                                        <th>化忌</th>
-                                    </tr>
-                                    <tr>
-                                        <td>甲</td>
-                                        <td>
-                                            <select id="TS_1_0">
-                                                <option value="5">廉貞</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_1_1">
-                                                <option value="13">破軍</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_1_2">
-                                                <option value="3">武曲</option>
-                                                <option value="15">文曲</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_1_3">
-                                                <option value="2">太陽</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>乙</td>
-                                        <td>
-                                            <select id="TS_2_0">
-                                                <option value="1">天機</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_2_1">
-                                                <option value="11">天梁</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_2_2">
-                                                <option value="0">紫微</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_2_3">
-                                                <option value="7">太陰</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>丙</td>
-                                        <td>
-                                            <select id="TS_3_0">
-                                                <option value="4">天同</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_3_1">
-                                                <option value="1">天機</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_3_2">
-                                                <option value="14">文昌</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_3_3">
-                                                <option value="5">廉貞</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>丁</td>
-                                        <td>
-                                            <select id="TS_4_0">
-                                                <option value="7">太陰</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_4_1">
-                                                <option value="4">天同</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_4_2">
-                                                <option value="1">天機</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_4_3">
-                                                <option value="9">巨門</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>戊</td>
-                                        <td>
-                                            <select id="TS_5_0">
-                                                <option value="8">貪狼</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_5_1">
-                                                <option value="7">太陰</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_5_2">
-                                                <option value="17">右弼</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_5_3">
-                                                <option value="1">天機</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>己</td>
-                                        <td>
-                                            <select id="TS_6_0">
-                                                <option value="3">武曲</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_6_1">
-                                                <option value="8">貪狼</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_6_2">
-                                                <option value="11">天梁</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_6_3">
-                                                <option value="15">文曲</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>庚</td>
-                                        <td>
-                                            <select id="TS_7_0">
-                                                <option value="2">太陽</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_7_1">
-                                                <option value="3">武曲</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_7_2">
-                                                <option value="7">太陰</option>
-                                                <option value="4">天同</option>
-                                                <option value="6">天府</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_7_3">
-                                                <option value="4">天同</option>
-                                                <option value="10">天相</option>
-                                                <option value="7">太陰</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>辛</td>
-                                        <td>
-                                            <select id="TS_8_0">
-                                                <option value="9">巨門</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_8_1">
-                                                <option value="2">太陽</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_8_2">
-                                                <option value="15">文曲</option>
-                                                <option value="3">武曲</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_8_3">
-                                                <option value="14">文昌</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>壬</td>
-                                        <td>
-                                            <select id="TS_9_0">
-                                                <option value="11">天梁</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_9_1">
-                                                <option value="0">紫微</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_9_2">
-                                                <option value="16">左輔</option>
-                                                <option value="6">天府</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_9_3">
-                                                <option value="3">武曲</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>癸</td>
-                                        <td>
-                                            <select id="TS_0_0">
-                                                <option value="13">破軍</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_0_1">
-                                                <option value="9">巨門</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_0_2">
-                                                <option value="7">太陰</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="TS_0_3">
-                                                <option value="8">貪狼</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #FFF380; ">閏月計算：
-                            <input type="radio" name="leapMode" id="leapMode0" value="0">本月論
-                            <input type="radio" name="leapMode" id="leapMode1" value="1" checked="">月中論
-                            <input type="radio" name="leapMode" id="leapMode2" value="2">下月論
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #FFF380; ">天馬安法(測試中)：
-                            <input type="radio" id="skyHorse" value="1" checked="">月馬
-                            <input type="radio" id="skyHorse" value="2">年馬
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center; ">
-                            <input type="button" value="開始排盤" onclick="caculateHS()">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <center>
-                <div>
-                    程式設計：
-                    <a href="mailto:schungs@gmail.com">S.C.Hung</a>
-                    <br> 版權所有：Copyright Since 2015
-                </div>
-            </center>
-        </div>
+        <table id="four_trans_table" style="display: none;">
+            <tr>
+                <th>天 干 四 化 設 定
+                </th>
+            </tr>
+            <tbody>
+                <tr>
+                    <th>天干</th>
+                    <th>化祿</th>
+                    <th>化權</th>
+                    <th>化科</th>
+                    <th>化忌</th>
+                </tr>
+                <tr>
+                    <td>甲</td>
+                    <td>
+                        <select id="TS_1_0">
+                            <option value="5">廉貞</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_1_1">
+                            <option value="13">破軍</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_1_2">
+                            <option value="3">武曲</option>
+                            <option value="15">文曲</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_1_3">
+                            <option value="2">太陽</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>乙</td>
+                    <td>
+                        <select id="TS_2_0">
+                            <option value="1">天機</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_2_1">
+                            <option value="11">天梁</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_2_2">
+                            <option value="0">紫微</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_2_3">
+                            <option value="7">太陰</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>丙</td>
+                    <td>
+                        <select id="TS_3_0">
+                            <option value="4">天同</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_3_1">
+                            <option value="1">天機</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_3_2">
+                            <option value="14">文昌</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_3_3">
+                            <option value="5">廉貞</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>丁</td>
+                    <td>
+                        <select id="TS_4_0">
+                            <option value="7">太陰</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_4_1">
+                            <option value="4">天同</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_4_2">
+                            <option value="1">天機</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_4_3">
+                            <option value="9">巨門</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>戊</td>
+                    <td>
+                        <select id="TS_5_0">
+                            <option value="8">貪狼</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_5_1">
+                            <option value="7">太陰</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_5_2">
+                            <option value="17">右弼</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_5_3">
+                            <option value="1">天機</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>己</td>
+                    <td>
+                        <select id="TS_6_0">
+                            <option value="3">武曲</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_6_1">
+                            <option value="8">貪狼</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_6_2">
+                            <option value="11">天梁</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_6_3">
+                            <option value="15">文曲</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>庚</td>
+                    <td>
+                        <select id="TS_7_0">
+                            <option value="2">太陽</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_7_1">
+                            <option value="3">武曲</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_7_2">
+                            <option value="7">太陰</option>
+                            <option value="4">天同</option>
+                            <option value="6">天府</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_7_3">
+                            <option value="4">天同</option>
+                            <option value="10">天相</option>
+                            <option value="7">太陰</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>辛</td>
+                    <td>
+                        <select id="TS_8_0">
+                            <option value="9">巨門</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_8_1">
+                            <option value="2">太陽</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_8_2">
+                            <option value="15">文曲</option>
+                            <option value="3">武曲</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_8_3">
+                            <option value="14">文昌</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>壬</td>
+                    <td>
+                        <select id="TS_9_0">
+                            <option value="11">天梁</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_9_1">
+                            <option value="0">紫微</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_9_2">
+                            <option value="16">左輔</option>
+                            <option value="6">天府</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_9_3">
+                            <option value="3">武曲</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>癸</td>
+                    <td>
+                        <select id="TS_0_0">
+                            <option value="13">破軍</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_0_1">
+                            <option value="9">巨門</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_0_2">
+                            <option value="7">太陰</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="TS_0_3">
+                            <option value="8">貪狼</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <div class="pika-single is-hidden is-bound" style=""></div>
+        <div class="container">
+            <form>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="請填入姓名">
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-legend col-sm-2">性別</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender_male" value="true" checked> 男
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender_female" value="false"> 女
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">生日</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="birthDate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="inlineFormCustomSelectPref">出生時辰</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="bornHour">
+                            <option value="1" selected="">早子(00-01)</option>
+                            <option value="2">丑(01-03)</option>
+                            <option value="3">寅(03-05)</option>
+                            <option value="4">卯(05-07)</option>
+                            <option value="5">辰(07-09)</option>
+                            <option value="6">巳(09-11)</option>
+                            <option value="7">午(11-13)</option>
+                            <option value="8">未(13-15)</option>
+                            <option value="9">申(15-17)</option>
+                            <option value="10">酉(17-19)</option>
+                            <option value="11">戌(19-21)</option>
+                            <option value="0">亥(21-23)</option>
+                            <option value="1">晚子(23-00)</option>
+                        </select>
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-legend col-sm-2">閏月計算：</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="leapMode" id="leapMode0" value="0"> 本月論
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="leapMode" id="leapMode1" value="1" checked> 月中論
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="leapMode" id="leapMode2" value="2"> 下月論
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group" disabled>
+                    <div class="row">
+                        <legend class="col-form-legend col-sm-2">天馬安法：</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="skyHorse" id="skyHorse0" value="true" checked> 月馬
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="skyHorse" id="skyHorse1" value="false"> 年馬
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary" onclick="caculateHS()">開始排盤</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 
 </html>
