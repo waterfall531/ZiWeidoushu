@@ -94,7 +94,7 @@
   width: 10%;
 }
 
-.row .col_right {
+.row .col_center {
   height: 80%;
   width: 90%;
   display: flex;
@@ -103,7 +103,7 @@
   justify-content: space-evenly;
 }
 
-.col_right div {
+.col_center div {
   flex-basis: 0%;
 }
 

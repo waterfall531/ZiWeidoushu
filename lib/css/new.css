@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .summary {
   color: #151b54;
 }
@@ -95,19 +100,29 @@
 }
 
 .row .col_right {
-  height: 80%;
-  width: 90%;
+  width: 10%;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
 .col_right div {
-  flex-basis: 0%;
+  flex: 0 0 50%;
+}
+
+.row .col_center {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: right;
+}
+
+.col_center div {
+  flex: 0 0 15%;
 }
 
 .row .col_bottom {
+  line-height: 1.2;
   height: 20%;
   float: right;
   writing-mode: horizontal-tb;
