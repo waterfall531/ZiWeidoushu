@@ -1,5 +1,5 @@
 .summary {
-  color: #151B54;
+  color: #151b54;
 }
 
 .summary_tb {
@@ -12,32 +12,32 @@
 }
 
 .summary_leapmonth {
-  color: #EAC117;
+  color: #eac117;
 }
 
 .palace_name {
-  color: #2B1B17;
+  color: #2b1b17;
 }
 
 .acquired {
-  color: #E41B17;
+  color: #e41b17;
 }
 
 .palace_stem {
   float: left;
-  color: #E8A317;
+  color: #e8a317;
 }
 
 .primary_star {
-  color: #1F45FC;
+  color: #1f45fc;
 }
 
 .nice_star {
-  color: #347C2C;
+  color: #347c2c;
 }
 
 .bad_star {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .hollow_star {
@@ -45,17 +45,17 @@
 }
 
 .secondary_star {
-  color: #4863A0;
+  color: #4863a0;
 }
 
 .transform_star {
   background-color: green;
-  color: #FEFEFE;
+  color: #fefefe;
   font-size: 90%;
 }
 
 .period_range {
-  color: #6A287E;
+  color: #6a287e;
   font-size: 85%;
 }
 
@@ -97,7 +97,14 @@
 .row .col_right {
   height: 80%;
   width: 90%;
-  float: right;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.col_right div {
+  flex-basis: 0%;
 }
 
 .row .col_bottom {
@@ -125,8 +132,8 @@ html {
   }
 
   .row .col-3,
-.row .col-6,
-.row .col-3 .col-half {
+  .row .col-6,
+  .row .col-3 .col-half {
     padding-top: 4px;
     padding-bottom: 4px;
   }
@@ -142,8 +149,8 @@ html {
   }
 
   .row .col-3,
-.row .col-6,
-.row .col-3 .col-half {
+  .row .col-6,
+  .row .col-3 .col-half {
     padding-top: 4px;
     padding-bottom: 4px;
   }
@@ -154,8 +161,8 @@ html {
   }
 
   .row .col-3,
-.row .col-6,
-.row .col-3 .col-half {
+  .row .col-6,
+  .row .col-3 .col-half {
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -170,8 +177,8 @@ html {
   }
 
   .row .col-3,
-.row .col-6,
-.row .col-3 .col-half {
+  .row .col-6,
+  .row .col-3 .col-half {
     padding-top: 8px;
     padding-bottom: 8px;
   }
